@@ -1,6 +1,7 @@
 import React from 'react'
 import {Pagination} from 'react-bootstrap';
 export default function Paginations({page,setPage,hasNextPage}) {
+ // console.log(setPage)
     function adjustPage(amount) {
         setPage(prevPage => prevPage + amount)
       }

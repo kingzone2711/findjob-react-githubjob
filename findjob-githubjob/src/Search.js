@@ -63,19 +63,23 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Search() {
+export default function Search({search }) {
   const classes = useStyles();
   const [searchValue, setSearchValue] = useState("");
 
   const handleSearchInputChanges = e => {
     setSearchValue(e.target.value);
-    console.log(e.target.value)
   };
 
   const resetInputField = () => {
     setSearchValue("");
   };
 
+  const callSearchFunction = e => {
+    e.preventDefault();
+    search(searchValue);
+    resetInputField();
+  };
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -89,7 +93,7 @@ export default function Search() {
             
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            Material-UI
+            Call API from omdbapi
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -100,10 +104,10 @@ export default function Search() {
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}
-              value={searchValue}
-              onChange={handleSearchInputChanges}
+              onChange={handleSearchInputChanges} value={searchValue}
               inputProps={{ 'aria-label': 'search' }}
             />
+            <input onClick={callSearchFunction} type="submit" value="SEARCH" />
           </div>
         </Toolbar>
       </AppBar>
