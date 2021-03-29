@@ -1,5 +1,5 @@
 import React from 'react'
-import {Pagination} from 'react-bootstrap';
+import Pagination from 'react-bootstrap/Pagination'
 export default function Paginations({page,setPage,hasNextPage}) {
  // console.log(setPage)
     function adjustPage(amount) {

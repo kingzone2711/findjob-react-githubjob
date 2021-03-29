@@ -1,5 +1,4 @@
 import  { useState} from 'react'
-import spinner from "./assets/ajax-loader.gif";
 import {useFetchApi} from './useFetchApi';
 import { Container } from 'react-bootstrap'
 import Job from './Job.js'
@@ -7,6 +6,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import Pagination from './Paginations'
 import Search from './Search'
+import CircularUnderLoad from './CircularUnderLoad'
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,10 +37,10 @@ export default function App() {
     <Container>
       <Search search={search} ></Search>
       
-      <h1 className="mb-4">finding movie</h1>
+      <h1 className="mb-4">Let looking for movies bro</h1>
       <Pagination page={page} setPage={setPage}></Pagination>
-      {loading && <img className="spinner" src={spinner} alt="Loading spinner" />}
-      {error && <h1>hello</h1>}
+      {loading && <CircularUnderLoad></CircularUnderLoad>}
+      {error && <h1>nothing film had found</h1>}
       <div className={classes.root}>
         <GridList cellHeight={160} className={classes.gridList} >
           {jobs.map((val, index) => {
